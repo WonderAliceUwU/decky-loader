@@ -1,6 +1,7 @@
 name: Builder Win
 
 on:
+  workflow_dispatch: 
   push:
   pull_request:
 
@@ -20,7 +21,7 @@ jobs:
       uses: actions/setup-node@v4
       with:
         node-version: 20
-      
+
     - name: Set up Python 3.11.7 🐍
       uses: actions/setup-python@v5
       with:
@@ -30,7 +31,7 @@ jobs:
       uses: snok/install-poetry@v1
       with:
         virtualenvs-create: false
-        
+
     - name: Install Python dependencies ⬇️
       working-directory: ./backend
       run: |
@@ -64,4 +65,3 @@ jobs:
         path: |
           ./backend/dist/PluginLoader.exe
           ./backend/dist/PluginLoader_noconsole.exe
-    
